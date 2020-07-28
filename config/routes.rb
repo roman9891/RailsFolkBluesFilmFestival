@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :showings
+  resources :showings do
+    resources :comments
+  end
   resources :movies
   resources :users
+  get '/', to: 'showings#welcome', as: 'welcome_path'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
