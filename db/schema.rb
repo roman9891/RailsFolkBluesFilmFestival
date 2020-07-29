@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_212848) do
+ActiveRecord::Schema.define(version: 2020_07_29_145104) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment_text"
@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(version: 2020_07_27_212848) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "url"
     t.integer "user_id"
     t.boolean "is_mature"
     t.string "acceptance_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
   end
 
   create_table "showings", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_212848) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin"
   end
 
 end
