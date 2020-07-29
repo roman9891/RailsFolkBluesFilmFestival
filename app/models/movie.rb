@@ -1,8 +1,8 @@
 class Movie < ApplicationRecord
     has_one :showing
     belongs_to :user
-    validates :name, :url, presence: true
-    validates :name, uniqueness: true
+    validates :title, :url, presence: true
+    validates :title, uniqueness: true
     #before_save :parse_url
     #validates :url, format: {with: regex, message: ""}
 

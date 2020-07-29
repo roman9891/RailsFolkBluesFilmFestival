@@ -1,10 +1,12 @@
 <%if @movie.acceptance_status == 'accepted'%>
-    <h1><%=@movie.name%></h1>
+    <h1><%=@movie.title%></h1>
     <div><iframe class='resp-iframe' style = "background-size: 100%; background-repeat: no-repeat; background-image: url('https://i.pinimg.com/originals/20/ce/eb/20ceeb06601430b18bd11cb3244cb40f.jpg')" src=<%=@movie.parse_url%> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
     <div>Submitted by <%=@movie.user.name%></div>
     <div><%=%></div>
 <%else%>
     <p>This movie was rejected and is not available for viewing</p>
 <%end%>
+
+<%= button_to "Edit", edit_movie_path, method: :get %>
 
 <%=params.inspect%>

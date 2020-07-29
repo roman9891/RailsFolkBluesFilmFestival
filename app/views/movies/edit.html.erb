@@ -1,9 +1,5 @@
 <h1>Movie Edit Form</h1>
-<%=form_for @movie do |f|%>
-    <%=f.label 'Name: '%>
-    <%=f.text_field :name%>
-    <%=f.label 'Link: '%>
-    <%=f.text_field :url%>
-    <%=f.collection_select :user, User.all, :id, :name%>
-    <%=f.submit%>
-<%end%>
+
+<%= render 'form_base'%>
+
+<%= button_to "Delete", @movie, method: "DELETE" %>

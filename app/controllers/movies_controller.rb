@@ -14,13 +14,13 @@ class MoviesController < ApplicationController
 
     def create
         @movie = Movie.create(movie_params)
-        #byebug
-        #if @movie.valid?
+        
+        if @movie.valid?
             redirect_to movie_path(@movie)
-        #else
-        #    flash[:errors] = @movie.errors.full_messages
-        #    redirect_to new_movie_path
-        #end
+        else
+            flash[:errors] = @movie.errors.full_messages
+           redirect_to new_movie_path
+        end
     end
 
     def edit
@@ -28,11 +28,17 @@ class MoviesController < ApplicationController
     end
 
     def update
-
+        if @movie.update(movie_params)
+            redirect_to movie_path(@movie)
+        else
+            flash[:errors] = @movie.errors.full_messages
+            redirect_to edit_movie_path 
+        end
     end
 
     def destroy
-
+        @movie.destroy
+        redirect_to movies_path(@movie)
     end
 
     def find_movie
@@ -42,6 +48,6 @@ class MoviesController < ApplicationController
     private
 
     def movie_params
-        params.require(:movie).permit(:name, :url, :user_id, :is_mature, :acceptance_status)
+        params.require(:movie).permit(:title, :url, :user_id, :is_mature, :acceptance_status)
     end
 end
