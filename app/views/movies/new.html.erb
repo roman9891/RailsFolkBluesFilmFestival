@@ -1,0 +1,13 @@
+<h1>Movie Submission Form</h1>
+<%if flash[:errors]%>
+    <%='Invalid'%>
+<%end%>
+<%=form_for @movie do |f|%>
+    <%=f.label 'Name: '%>
+    <%=f.text_field :name%>
+    <%=f.label 'Link: '%>
+    <%=f.text_field :url%>
+    <%=f.collection_select :user_id, User.all, :id, :name%>
+    <%=f.submit%>
+<%end%>
+
