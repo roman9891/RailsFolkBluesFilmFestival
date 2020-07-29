@@ -1,0 +1,20 @@
+<h1> user show PAGE </h1>
+
+<%= button_to "edit",edit_user_path, method: :get %>
+
+Name <%= @user.name %><br>
+email <%= @user.email %><br>
+password <%= @user.password %><br>
+
+<div class=list-of-movies >
+LIST OF MOVIES:
+<ul class= scroller>
+    <% @user.movies.each do |movie| %>
+        <div class=movie-container>
+        <li>
+        <img class="show-poster" src="http://www.fillmurray.com/g/155/300">
+        <%= link_to movie.name, movie_path(movie) %>
+        <li>
+        </div>
+    <% end %>
+</ul>
