@@ -19,7 +19,7 @@ Showing.destroy_all
         email: Faker::Internet.unique.email, 
         password: "funnycat83")
     m1 = Movie.create(
-        name: Faker::JapaneseMedia::SwordArtOnline.game_name, 
+        title: Faker::JapaneseMedia::SwordArtOnline.game_name, 
         url: '<iframe src="https://player.vimeo.com/video/209913748?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         <p><a href="https://vimeo.com/209913748">Adele Radio City</a> from <a href="https://vimeo.com/user7917232">Es Devlin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>', 
         is_mature: true, acceptance_status: "accepted", 
