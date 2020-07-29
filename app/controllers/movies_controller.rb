@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-    before_action :find_movie, only: [:show, :edit, :destroy]
+    before_action :find_movie, only: [:show, :edit, :update, :destroy]
     def index
         @movies = Movie.all
     end
@@ -41,13 +41,27 @@ class MoviesController < ApplicationController
         redirect_to movies_path
     end
 
-    def find_movie
-        @movie = Movie.find(params[:id])
+    def status
+        @movies = Movie.all.select do |movie|
+            movie.acceptance_status == params[:status]
+        end
+
+
+        #/movies/
+
+
     end
 
-    private
 
+
+    
+    private
+    
     def movie_params
-        params.require(:movie).permit(:title, :url, :user_id, :is_mature, :acceptance_status)
+        params.require(:movie).permit(:title, :url, :user_id, :is_mature, :acceptance_status, :is_mature)
+    end
+
+    def find_movie
+        @movie = Movie.find(params[:id])
     end
 end

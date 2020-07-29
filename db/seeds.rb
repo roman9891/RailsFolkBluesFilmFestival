@@ -15,6 +15,7 @@ Showing.destroy_all
 
 
 10.times do 
+    hero = ["accepted","rejected","pending"].sample
     u1 = User.create(name: Faker::JapaneseMedia::SwordArtOnline.real_name, 
         email: Faker::Internet.unique.email, 
         password: "funnycat83")
@@ -22,8 +23,9 @@ Showing.destroy_all
         title: Faker::JapaneseMedia::SwordArtOnline.game_name, 
         url: '<iframe src="https://player.vimeo.com/video/209913748?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         <p><a href="https://vimeo.com/209913748">Adele Radio City</a> from <a href="https://vimeo.com/user7917232">Es Devlin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>', 
-        is_mature: true, acceptance_status: "accepted", 
-        user: User.all.sample)
+        is_mature: true,
+        user: User.all.sample,
+        acceptance_status: hero)
 end
 
 s1 = Showing.create(time: Time.now, movie: Movie.all.sample)

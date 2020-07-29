@@ -4,10 +4,17 @@
     <%end%>
 <%end%>
 <%=form_for @movie do |f|%>
-    <%=f.label 'Name: '%>
+    <%=f.label :title%>
     <%=f.text_field :title%>
-    <%=f.label 'Link: '%>
-    <%=f.text_field :url%>
-    <%=f.collection_select :user_id, User.all, :id, :name%>
+     <div>
+        <p>Please include full embed link for your movie</p>
+        <%=f.label 'Link: '%>
+        <%=f.text_area :url%>
+    </div>
+    <%= f.label :description, "Movie Description: " %>
+    <%= f.text_area :description %>
+    <%=f.collection_select :user_id, User.all, :id, :name %>
+    <%=f.label 'Mature Content: '%>
+    <%=f.check_box :is_mature%>
     <%=f.submit%>
 <%end%>

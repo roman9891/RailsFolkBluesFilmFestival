@@ -1,0 +1,5 @@
+<h1>Comments Index</h1>
+<%@comments.each do |comment|%>
+    <%="#{comment.user.name} | #{comment.created_at}"%>
+    <%=comment.comment_text%>
+<%end%>

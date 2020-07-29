@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :showings do
-    resources :comments
+    resources :comments, only: [:index, :create, :destroy]
   end
+  get '/movies/status/:status', to: "movies#status", as: 'movie_status'
   resources :movies
   resources :users
   get '/', to: 'showings#welcome', as: 'welcome'

@@ -1,0 +1,4 @@
+<h1>Showing Index Page</h1>
+<%@showings.sort_by{|showing|showing.time}.reverse.each do |showing|%>
+    <li><%=link_to "#{showing.movie.title} | #{showing.time}", showing_path(showing)%></li>
+<%end%>

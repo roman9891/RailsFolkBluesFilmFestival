@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_145104) do
+ActiveRecord::Schema.define(version: 2020_07_29_214356) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment_text"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_29_145104) do
     t.string "url"
     t.integer "user_id"
     t.boolean "is_mature"
-    t.string "acceptance_status"
+    t.string "acceptance_status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_07_29_145104) do
 
   create_table "showings", force: :cascade do |t|
     t.integer "movie_id"
-    t.datetime "time"
+    t.date "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

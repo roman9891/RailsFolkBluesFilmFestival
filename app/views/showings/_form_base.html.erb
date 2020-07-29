@@ -1,0 +1,12 @@
+<%if flash[:errors]%>
+    <%=flash[:errors].each do |message|%>
+        <%="ERROR: #{message}"%>
+    <%end%>
+<%end%>
+<%=form_for @showing do |f|%>
+    <%=f.label :time %>
+    <%=f.date_field :time , min: Time.now%>
+    <%= f.label :movies_id ,"Movie Title: " %>
+    <%= f.collection_select :movie_id , @movies, :id, :title%>   
+    <%=f.submit%>
+<%end%>
