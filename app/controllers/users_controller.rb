@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
+        cookies[:fun] = 0
+        session[:yooo] = 0
     end
 
     def create

@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
     has_one :showing
     belongs_to :user
+    has_one_attached :poster
     
     validates :title, :url, presence: true
     #validates :url, uniqueness: true
