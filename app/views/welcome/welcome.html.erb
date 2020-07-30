@@ -1,12 +1,13 @@
-#link to login -
-#premier - poster, name and link to
-#movies -for MVP = highlights a few random films. FInal-  highlight most viewed files
-#link to movies
-#schedule week
-#rails festival blurb
-#contact us - link?
-# about us- link/
-<div><%=button_to 'Login', login_path, method: :get %></div> #link to login page
+<h1>Rails Dance Film Festival</h1>
+<div>    
+    <%if @current_user%>
+        <%="Welcome #{@current_user.name}"%>
+        <%=button_to 'Log Out', login_path, method: :delete%>
+    <%else%>
+        <%=button_to 'Sign-up', new_user_path, method: :get %>
+        <%=button_to 'Login', login_path, method: :get %>
+    <%end%>
+</div>
 <div>premier:
     <%=link_to Showing.today.movie.title, premier_path%>
 </div> #showcase for actual premier file

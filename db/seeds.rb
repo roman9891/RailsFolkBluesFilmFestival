@@ -30,3 +30,5 @@ end
 
 s1 = Showing.create(time: Time.now, movie: Movie.all.sample)
 c1 = Comment.create(comment_text: "woooooah", showing: s1, user: User.all.sample)
+
+admin_user = User.create(name: "Roman", email: "roman@mail.yo", password: "roman1", is_admin: true)

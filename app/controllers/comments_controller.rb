@@ -5,11 +5,13 @@ class CommentsController < ApplicationController
         @comments = Comment.all
     end
 
+    #must be logged in
     def create
         @comment = Comment.create(comment_params)
         
     end
 
+    #admin only
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show,:edit,:update,:destroy]
 
+    #admin
     def index
         @users = User.all
     end
@@ -10,13 +11,14 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-        cookies[:fun] = 0
-        session[:yooo] = 0
     end
 
+    #add authentication
+    #redirect to welcome??
     def create
         @user = User.create(user_params)
         if @user.valid?
+            session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
             flash[:errors] = @user.errors.full_messages
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
         end
     end
 
+    #only for current user in before 
     def edit
     end
 
@@ -47,6 +50,12 @@ class UsersController < ApplicationController
 
 
     private
+    def correct_user
+        if !@current_user == params[:id] || !@current_user.is_admin
+            redirect_to unauthorized_path
+        end
+    end
+
     def user_params
         params.require(:user).permit(:name,:email,:password)
     end
