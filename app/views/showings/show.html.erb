@@ -3,6 +3,5 @@
 Movie Name <%= @showing.movie.title %><br>
 Premiere Time <%= @showing.time %>
 
-
-
-<%= button_to "Edit", edit_showing_path, method: :get %>
+<%= button_to "Edit", edit_showing_path, method: :get %><br>
+<%= button_to "Show Comments", showing_comments_path(@showing),method: :get %>
