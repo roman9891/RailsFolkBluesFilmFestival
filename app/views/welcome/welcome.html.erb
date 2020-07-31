@@ -1,8 +1,15 @@
 
 <h1>Rails Dance Film Festival</h1>
+*To do: User Show Page - add movie submission button?* added link on user page
+*To do: Premier Page - Comment/Delete button?*
+*To do: validates showing for accepted?*    
+*To do: Movie New page - remove user drop down?*
+*To do: is mature filter for movies and premier?*
+*To do: Review Movies page?*
+*To do: Schedule Movies page?*
 <div>    
     <%if @current_user%>
-        <%="Welcome #{@current_user.name}"%>
+        <%=link_to "Welcome #{@current_user.name}", user_path(@current_user)%>
         <%=button_to 'Log Out', login_path, method: :delete%>
     <%else%>
         <%=button_to 'Sign-up', new_user_path, method: :get %>
@@ -10,7 +17,11 @@
     <%end%>
 </div>
 <div>premier:
-    <%=link_to Showing.today.movie.title, premier_path%>
+    <%if Showing.today%>
+        <%=link_to Showing.today.movie.title, premier_path%>
+    <%else%>
+        <%="No movie scheduled today"%>
+    <%end%>
 </div>
 <div><%=link_to 'Movie Gallery', movies_path%></div>
 <div>movies mvp</div><br>
@@ -23,7 +34,6 @@
            <tr>
                 <td> <%="#{showing.time.strftime("%A")}"%> </td>
                 <td> <%= "#{showing.movie.title}"%> </td>
-                <td> <%= link_to "Ticket time?????",  movie_path(showing.movie)%> </td>
            </tr>
         <%end%>
    

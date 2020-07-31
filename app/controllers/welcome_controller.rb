@@ -4,8 +4,10 @@ class WelcomeController < ApplicationController
     end
 
     def premier
-        @movie = Showing.today.movie
-        @comments = Showing.today.comments
+        if Showing.today
+            @movie = Showing.today.movie
+            @comments = Showing.today.comments
+        end
     end
 
     def login

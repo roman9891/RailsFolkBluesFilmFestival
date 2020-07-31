@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
     before_action :find_movie, only: [:show, :edit, :update, :destroy]
-    before_action :authorized, only: [:new]
+    #before_action :authorized
     before_action :admin_authorized, only: [:status]
+    #before_action is_not_guest, only: [:new, :edit, :destroy]
     def index
         if @current_user.nil? || !@current_user.is_admin
             @movies = Movie.accepted

@@ -32,8 +32,9 @@ Showing.destroy_all
        
         m1.poster.attach(io: open("https://www.fillmurray.com/200/"+(rand(200..220).to_s)), filename: 'file.jpg')
 
-    s1 = Showing.create(time: Faker::Time.between(from: Date.today - 7, to: Date.today + 7), movie: Movie.all.sample)
+    s1 = Showing.create(time: Faker::Time.unique.between(from: Date.today - 7, to: Date.today + 7), movie: Movie.all.sample)
     c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.all.sample, showing: Showing.all.sample)
 end
 
 admin_user = User.create(name: "Roman", email: "admin@admin", password: "roman1", is_admin: true)
+guest_user = User.create(name: "guest", email: "guest@guest", password: "guest")
