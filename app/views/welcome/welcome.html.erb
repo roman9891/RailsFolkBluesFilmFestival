@@ -7,8 +7,8 @@
 #contact us - link?
 # about us- link/
 <div><%=button_to 'Login', login_path, method: :get %></div> #link to login page
-<div>premier:
-    <%=link_to Showing.today.movie.title, premier_path%>
+<div class>premier:
+    <%=link_to image_tag(Showing.today.movie.poster), premier_path%>
 </div> #showcase for actual premier file
 <div><%=link_to 'Movie Gallery', movies_path%></div>
 <div>movies mvp</div><br>

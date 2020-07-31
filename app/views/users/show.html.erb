@@ -12,7 +12,7 @@ LIST OF MOVIES:
     <% @user.movies.each do |movie| %>
         <div class=movie-container>
         <li>
-        <img class="show-poster" src="http://www.fillmurray.com/g/155/300">
+        <%= image_tag(movie.poster) %>
         <%= link_to movie.title, movie_path(movie) %>
         <li>
         </div>
