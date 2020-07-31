@@ -1,10 +1,11 @@
 <h1> user show PAGE </h1>
 
-<%= button_to "edit",edit_user_path, method: :get %>
 
-Name <%= @user.name %><br>
+<p>Name <%= @user.name %><br>
 email <%= @user.email %><br>
+avatar <br> <%= image_tag(@user.avatar) %>
 
+<%= button_to "edit",edit_user_path, method: :get %></p>
 <div class=list-of-movies >
 LIST OF MOVIES:
 <ul class= scroller>

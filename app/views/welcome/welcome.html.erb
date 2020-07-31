@@ -22,10 +22,10 @@
 <div class="row">
 
 <%Showing.this_week.each do |showing|%>
-   <div class="col-md-4">
+   <div class="col-md-4" style="text-align: center">
    <div class= "col-6" style="text-align: center">
    <h2><%="#{showing.time.strftime("%B " +"%e "+ "%Y ")}"%></h2><br>
-   <%= image_tag(showing.movie.poster)%> </div>
+   <%= image_tag(showing.movie.poster , style: "text-align: center")%> </div>
         <div class= "col-6" style="text-align: center">
             <p><%= showing.movie.title %><br>
             <%= link_to "Reserve Ticket",  movie_path(showing.movie)%> </p>

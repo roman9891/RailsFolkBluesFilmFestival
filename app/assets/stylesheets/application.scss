@@ -3,7 +3,8 @@
 /* this gives formats the overall big menu bar. */
 body{
     padding-top: 75px;
-
+    background-color: #00ccff;
+ background-size: cover;
 }
 .logo{
     width:90px;    
@@ -83,11 +84,55 @@ body{
 
 }
 
-.this-weeks-showings h3{
-    color:black;
-}
+
 
 .this-weeks-showings img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width:50%;
     margin-top: 15px;
+}
+
+/* this is the end of the normal welcome bpage ccs */
+
+h1{
+   
+    background: url(asset_path("button-background.png")) -50px -80px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 40px;
+
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+h2{
+    color: #9900ff;
+}
+
+p{
+    color: #daff1f;
+}
+
+.new_user, edit_user{
+    border: 25px solid transparent;
+    padding: 15px;
+    border-image: url(asset-path('button-background.png')) 30 round;
+    background: url(asset-path('button-background.png')) 100px -80px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 40px;
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .new_user input{
+    -webkit-text-fill-color: black;
+    font-size: 20px;
 }
