@@ -1,0 +1,25 @@
+.header-button{
+    border: 0;
+    text-decoration: none !important ;
+    border-radius: 20px;
+    padding: 7px 20px;
+    float: right;
+    margin-top: 15px;
+    color: white !important;
+    font-weight: 600;
+    background-image: url(asset_path("button-background.png"));
+    background-size: 50%
+}
+ you will see why later */
+
+.logo{
+    width:90px;    
+}
+/* this gives formats the overall big menu bar. */
+.top-menu{
+    width: 100%;
+    height: 10%;
+    background-image:url(https://images.squarespace-cdn.com/content/v1/5eac760f1cd72c04fcdbe7c2/1588367803576-IYBQZRYCYZ7TFZ19G67K/ke17ZwdGBToddI8pDm48kD06iV7EzcMYsT-crTXcoxF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmDpuY3CiIfklTR0Hdsu_Ij7tfvcZVjgbxCh8mMCIDXh7YMOEwmtKC6VcPwIRbqBfW/Screen+Shot+2020-05-01+at+5.00.41+PM.png);
+    position: fixed;
+    top: 0;
+}

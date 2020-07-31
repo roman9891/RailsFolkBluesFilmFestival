@@ -3,6 +3,7 @@
 
 <p style= "text-align: center">Name <%= @user.name %><br>
 email <%= @user.email %><br>
+<%=link_to 'Submit Movie', new_movie_path%>
 
 <% if @user.avatar.attached? %>
 <br> <%= image_tag(@user.avatar, class: 'avatar') %> <br>

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized
+        byebug
         if !find_current_user 
             redirect_to new_user_path
         end
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
         if !find_current_user.is_admin 
             redirect_to unauthorized_path
         end
+    end
+
+    def correct_user
+        
     end
 end

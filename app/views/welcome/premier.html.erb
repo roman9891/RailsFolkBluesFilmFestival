@@ -1,23 +1,27 @@
 
-<h1> premiere </h1>
-
-<%=@movie.title%>
-<div class ="resp-container"> 
-    <iframe 
-        class='resp-iframe' 
-        style= "background-size: 100%; background-repeat: no-repeat; background-image: url('https://i.pinimg.com/originals/20/ce/eb/20ceeb06601430b18bd11cb3244cb40f.jpg')" 
-        src= <%=@movie.parse_url %> 
-        frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe> 
-</div>
-
-<%@comments.sort_by{:created_at}.each do |comment|%>
-    <li><%=comment.comment_text%></li>
-    <%if !@current_user.nil? && @current_user.is_admin %>
-        <%= button_to 'delete', showing_comments_path(comment), method: :destroy %>
-<%end%>
+<h1>Premier Page</h1>
+<%if @movie%>    
+    <%=@movie.title%>
+    <div class ="resp-container"> 
+        <iframe 
+            class='resp-iframe' 
+            style= "background-size: 100%; background-repeat: no-repeat; background-image: url('https://i.pinimg.com/originals/20/ce/eb/20ceeb06601430b18bd11cb3244cb40f.jpg')" 
+            src= <%=@movie.parse_url %> 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe> 
+    </div>
+    [New Comment]?
+    <%@comments.sort_by{:created_at}.each do |comment|%>
+        <li><%=comment.comment_text%></li>
+        <%if !@current_user.nil? && @current_user.is_admin %>
+                <%= button_to 'delete', "comments/#{comment.id}", method: :destroy %>
+                
+        <%end%>
+    <%end%>
+<%else%>
+<h1>No premier scheduled </h1>
 <%end%>
 
 
