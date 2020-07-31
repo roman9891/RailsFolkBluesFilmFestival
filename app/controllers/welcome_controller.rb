@@ -4,10 +4,12 @@ class WelcomeController < ApplicationController
     end
 
     def premier
-        if Showing.today
+        #if Showing.today
+            @showing = Showing.today
+            @comment = Comment.new
             @movie = Showing.today.movie
             @comments = Showing.today.comments
-        end
+        #end
     end
 
     def login
@@ -15,7 +17,8 @@ class WelcomeController < ApplicationController
     end
 
     def create
-        @user = User.find_by(email: params[:user][:email])
+        byebug
+        @user = User.find_by(email: params[:user][:email])#@current_user
         if @user
             session[:user_id] = @user.id
             redirect_to welcome_path

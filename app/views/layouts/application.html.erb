@@ -19,7 +19,16 @@
         <%=button_to 'Sign-up', new_user_path, method: :get ,class: "header-button", id: "sign-up-button" %>
         <%=button_to 'Login', login_path, method: :get ,class: 'header-button', id:'log-in-button' %>
         <%end%>
-      <%= button_to "Home", premier_url , method: :get ,class: "header-button"%>
+        <%if @current_user.nil? || !@current_user.is_admin && @current_user != @movie.user%>
+        <%else %>
+        <%=button_to 'Schedule Film', showings_path, method: :get, class: "header-button", id: "schedule-button"%>   
+        <%end%>
+        <%if @current_user.nil? || !@current_user.is_admin && @current_user != @movie.user%>
+        <%else %>
+        <%=button_to 'Approve Films', "/movies/status/pending", method: :get, class: "header-button", id: "schedule-button"%>    
+        <%end%>
+      <%= button_to "Home", welcome_url, method: :get ,class: "header-button"%>
+      <%= button_to "All Movies", movies_path, method: :get ,class: "header-button"%>
       </div>
     </nav>
     <div class= "row"> </div>

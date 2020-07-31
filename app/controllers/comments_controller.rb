@@ -13,9 +13,14 @@ class CommentsController < ApplicationController
         end
     end
 
+    def new
+        @comment = Comment.new
+    end
+
     def create
+        byebug
         @comment = Comment.create(comment_params)
-        
+        redirect_to premier_url
     end
 
     def destroy

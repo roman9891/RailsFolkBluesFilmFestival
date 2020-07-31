@@ -13,8 +13,13 @@
     </div>
     <%= f.label :description, "Movie Description: " %>
     <%= f.text_area :description %>
-    <%=f.collection_select :user_id, User.all, :id, :name %>
-    <%=f.label 'Mature Content: '%>
-    <%=f.check_box :is_mature%>
+    <%= f.label :poster %><br>
+    <%= f.file_field :poster %>
+    <%if @current_user.nil? || !@current_user.is_admin && @current_user != @movie.user%>
+    <%else %>
+    <%= f.label :acceptance_status %>
+    <%= f.text_field :acceptance_status%><br>     
+    <%end%>
+    <%=f.hidden_field :user_id, value: @current_user.id%>
     <%=f.submit%>
 <%end%>

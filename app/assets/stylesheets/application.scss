@@ -3,7 +3,7 @@
 /* this gives formats the overall big menu bar. */
 body{
     padding-top: 75px;
-    background-color: #00ccff;
+    background-color: white;
  background-size: cover;
 }
 .logo{
@@ -24,6 +24,9 @@ body{
 }
 #log-in-button{
     background: skyblue;
+}
+#schedule-button{
+    background: black;
 }
 /* this is the end of the individual button styles */
 
@@ -146,3 +149,35 @@ p{
 .scroller img{
     height: 300px;
 }
+
+.resp-container{
+
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+ }
+
+ .resp-iframe{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 60%;
+     border: 0;
+ }
+
+ .resp-iframe img{
+     max-height: 100%; 
+     max-width: 100%;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+    
+ }
+.comment{
+    border-radius: 25px;
+  background: #73AD21;
+  padding: 20px; 
+  width: 50%;
+  height: 50px;
+ }

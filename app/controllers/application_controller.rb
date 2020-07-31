@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized
-        byebug
         if !find_current_user 
             redirect_to new_user_path
         end

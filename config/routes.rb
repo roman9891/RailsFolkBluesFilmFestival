@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   #this restricted to admin only. users can go to movie/index where we will do a conditional save
   get '/movies/status/:status', to: "movies#status", as: 'movie_status'
   get '/movies/premier', to: 'welcome#premier', as: "premier"
-  
-  resources :showings do
-  resources :comments, only: [:index, :create, :destroy]
-end
+  resources :comments, only: [:new, :index, :create, :destroy]
+  resources :showings
   resources :movies
   resources :users
   get '/', to: 'welcome#welcome', as: 'welcome'

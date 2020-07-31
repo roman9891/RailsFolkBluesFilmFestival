@@ -1,8 +1,18 @@
-<h1>Movie Index</h1>
-<div class=gallery id=index>
-<%@movies.each do |movie|%>
-    <li id=index><%=link_to image_tag(movie.poster), movie_path(movie)%>  
-        <p><%= movie.title %></p>
-    </li>
-<%end%>
+
+  <div class = "container this-weeks-showings">
+<h1 style= "text-align: center"> Movie Index </h1>
+<div class="row">
+
+<% @movies.each do |movie|%>
+   <div class="col-md-4" style="text-align: center">
+   <div class= "col-6" style="text-align: center">
+   <%= image_tag(movie.poster , style: "text-align: center")%> </div>
+        <div class= "col-6" style="text-align: center">
+            <p><%= link_to movie.title,  movie_path(movie)%> </p>
+         </div>
+    </div>
+    
+ <%end%>
+
+
 </div>

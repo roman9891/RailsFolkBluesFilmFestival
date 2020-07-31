@@ -1,7 +1,7 @@
 
-<h1>Premier Page</h1>
+
 <%if @movie%>    
-    <%=@movie.title%>
+    <h1><%=@movie.title%></h1>
     <div class ="resp-container"> 
         <iframe 
             class='resp-iframe' 
@@ -12,17 +12,20 @@
             allowfullscreen>
         </iframe> 
     </div>
-    [New Comment]?
-    <%@comments.sort_by{:created_at}.each do |comment|%>
-        <li><%=comment.comment_text%></li>
-        <%if !@current_user.nil? && @current_user.is_admin %>
-                <%= button_to 'delete', "comments/#{comment.id}", method: :destroy %>
-                
-        <%end%>
+    <% @comments.sort_by{:created_at}.each do |comment|%>
+        <p class= "comment"><%=comment.comment_text%></p>
+    <%end%>
+     <%=form_for @comment do |f|%>
+        <%= f.text_area :comment_text %>
+        <%=f.hidden_field :user_id, value: @current_user.id %>
+        <%=f.hidden_field :showing_id, value: Showing.today.id%>
+        <%=f.submit%>
     <%end%>
 <%else%>
 <h1>No premier scheduled </h1>
 <%end%>
+<%=button_to “Pending Movies”, ‘movies/status/pending’, method: :get%>
+<%=button_to “Schedule”, ‘showings/new’, method: :get%>
 
 
 

@@ -40,4 +40,6 @@ Showing.destroy_all
     c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.first, showing: Showing.all.sample)
 end
 
+Showing.create(time: Faker::Time.between(from: Date.today, to: Date.today), movie: Movie.all.sample)
+
 admin_user = User.create(name: "Roman", email: "admin@admin", password: "roman1", is_admin: true)
