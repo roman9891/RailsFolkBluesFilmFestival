@@ -1,8 +1,16 @@
 class CommentsController < ApplicationController
-    # resources :comments, only: [:index, :create, :destroy]
-    
+    before_action :authorized, only: [:create]
+    before_action :admin_authorized, only: [:destroy]
+
     def index
         @comments = Comment.all
+    end
+
+    def showing_index
+        @showing = Showing.find_by(id: params[:id])
+        @comments = Comment.all.select do |comment|
+            comment.showing == @showing
+        end
     end
 
     def create
@@ -13,7 +21,7 @@ class CommentsController < ApplicationController
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
-        redirect_to comments_path
+        redirect_to showing_comments_path
     end
 
     private

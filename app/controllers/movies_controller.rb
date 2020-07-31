@@ -1,7 +1,13 @@
 class MoviesController < ApplicationController
     before_action :find_movie, only: [:show, :edit, :update, :destroy]
+    before_action :authorized, only: [:new]
+    before_action :admin_authorized, only: [:status]
     def index
-        @movies = Movie.all
+        if @current_user.nil? || !@current_user.is_admin
+            @movies = Movie.accepted
+        else
+            @movies = Movie.all
+        end
     end
 
     def show
@@ -24,7 +30,7 @@ class MoviesController < ApplicationController
     end
 
     def edit
-
+        correct_users_movie
     end
 
     def update
@@ -45,18 +51,15 @@ class MoviesController < ApplicationController
         @movies = Movie.all.select do |movie|
             movie.acceptance_status == params[:status]
         end
-
-
-        #/movies/
-
-
     end
-
-
-
     
     private
-    
+    def correct_users_movie
+        if !(@movie.user == @current_user) && !@current_user.is_admin
+            redirect_to unauthorized_path
+        end
+    end
+
     def movie_params
         params.require(:movie).permit(:title, :url, :user_id, :is_mature, :acceptance_status, :is_mature)
     end

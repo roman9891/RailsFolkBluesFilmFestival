@@ -10,5 +10,8 @@ end
   resources :users
   get '/', to: 'welcome#welcome', as: 'welcome'
   get '/login', to: 'welcome#login', as: 'login'
+  post '/login', to: 'welcome#create', as: 'new_login'
+  delete '/login', to: 'welcome#destroy', as: 'delete_login'
+  get '/unauthorized', to: 'welcome#unauthorized', as: 'unauthorized'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

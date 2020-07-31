@@ -1,6 +1,6 @@
 class ShowingsController < ApplicationController
     before_action :find_showing, only: [:show,:edit,:update,:destroy]
-    
+    before_action :admin_authorized
     def index
         @showings = Showing.all
     end
