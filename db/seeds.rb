@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'open-uri'
-require 'mini_magick"'
+require 'mini_magick'
 
 User.destroy_all
 Movie.destroy_all
@@ -37,7 +37,7 @@ Showing.destroy_all
         u1.avatar.attach(io: open("https://loremflickr.com/500/600/marvel"), filename: 'file.jpg')
         puts "attached avatar"
     s1 = Showing.create(time: Faker::Time.between(from: Date.today, to: Date.today + 7), movie: Movie.all.sample)
-    c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.all.sample, showing: Showing.all.sample)
+    c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.first, showing: Showing.all.sample)
 end
 
 admin_user = User.create(name: "Roman", email: "admin@admin", password: "roman1", is_admin: true)
