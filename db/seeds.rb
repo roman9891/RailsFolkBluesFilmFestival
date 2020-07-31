@@ -26,6 +26,8 @@ Showing.destroy_all
         is_mature: true,
         user: User.all.sample,
         acceptance_status: hero)
+    s1 = Showing.create(time: Faker::Time.between(from: Date.today - 7, to: Date.today + 7), movie: Movie.all.sample)
+    c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.all.sample, showing: Showing.all.sample)
 end
 
 s1 = Showing.create(time: Time.now, movie: Movie.all.sample)
