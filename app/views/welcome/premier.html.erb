@@ -14,10 +14,13 @@
     [New Comment]?
     <%@comments.sort_by{:created_at}.each do |comment|%>
         <li><%=comment.comment_text%></li>
-        [Delete]?
+        <%if !@current_user.nil? && @current_user.is_admin %>
+                <%= button_to 'delete', "comments/#{comment.id}", method: :destroy %>
+                
+        <%end%>
     <%end%>
 <%else%>
-    No premier scheduled
+<h1>No premier scheduled </h1>
 <%end%>
 
 
