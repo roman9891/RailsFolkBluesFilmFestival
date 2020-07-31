@@ -1,0 +1,148 @@
+@import "bootstrap";
+
+/* this gives formats the overall big menu bar. */
+body{
+    padding-top: 75px;
+    background-color: #00ccff;
+ background-size: cover;
+}
+.logo{
+    width:90px;    
+}
+.header-buttons{
+    float: right;
+}
+/* the following are styling for the top-menu/ header-buttons buttons. */
+#log-out-button{
+    background: green;
+}
+#welcome-status{
+    background: blue;
+}
+#sign-up-button{
+    background: purple;
+}
+#log-in-button{
+    background: skyblue;
+}
+/* this is the end of the individual button styles */
+
+.header-button{
+    
+    text-decoration: none !important ;
+    border-radius: 20px;
+    padding: 7px 20px;
+    float: right;
+    margin-top: 15px;
+    color: white !important;
+    font-weight: 600;
+    background-image: url(asset_path("button-background.png"));
+    background-size: 50%;
+}
+.top-menu{
+    width: 100%;
+    height: 10%;
+    z-index: 1;
+    
+    background-image: url(asset_path("button-background.png"));
+    background-size: 25%;
+    position: fixed;
+    top: 0;
+    margin-bottom: 50px !important;
+}
+
+
+.movie-details{
+    margin: 3% 0;
+
+}
+.creator-info img{
+    height: 100px;
+    width: 100px;
+
+}
+.right-box a {
+    text-decoration: none !important ;
+    border-radius: 20px;
+    padding: 7px 20px;
+    margin-top: 15px;
+    color: white !important;
+    font-weight: 600;
+    background-image: url(asset_path("button-background.png"));
+    background-size: 50%;
+    display: inline-block;
+}
+.left-box{
+    overflow:hidden;
+    height: 700px;
+    width: 500px;
+    text-align: center;
+}
+.left-box img{    
+       height: 500px;
+       
+
+}
+
+
+
+.this-weeks-showings img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    margin-top: 15px;
+}
+
+/* this is the end of the normal welcome bpage ccs */
+
+h1{
+   
+    background: url(asset_path("button-background.png")) -50px -80px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 40px;
+
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+h2{
+    color: #9900ff;
+}
+
+p{
+    color: #daff1f;
+}
+
+.new_user, edit_user{
+    border: 25px solid transparent;
+    padding: 15px;
+    border-image: url(asset-path('button-background.png')) 30 round;
+    background: url(asset-path('button-background.png')) 100px -80px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 40px;
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .new_user input{
+    -webkit-text-fill-color: black;
+    font-size: 20px;
+}
+
+.avatar{
+    height: 150px;
+    vertical-align: middle;
+    border-radius: 50%    
+}
+
+.scroller img{
+    height: 300px;
+}

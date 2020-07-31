@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'open-uri'
+require 'mini_magick'
 
 User.destroy_all
 Movie.destroy_all
@@ -26,15 +27,17 @@ Showing.destroy_all
         <p><a href="https://vimeo.com/209913748">Adele Radio City</a> from <a href="https://vimeo.com/user7917232">Es Devlin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>', 
         is_mature: true,
         user: User.all.sample,
+        description: Faker::Lorem.paragraphs(number: 1, supplemental: true).join,
 
         acceptance_status: hero,
         )
        
-        m1.poster.attach(io: open("https://www.fillmurray.com/200/"+(rand(200..220).to_s)), filename: 'file.jpg')
-
-    s1 = Showing.create(time: Faker::Time.unique.between(from: Date.today - 7, to: Date.today + 7), movie: Movie.all.sample)
-    c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.all.sample, showing: Showing.all.sample)
+        m1.poster.attach(io: open("https://theposterdb.com/api/assets/"+(rand(17092..17104).to_s)), filename: 'file.jpg')
+        puts "attached poster"
+        u1.avatar.attach(io: open("https://loremflickr.com/500/600/marvel"), filename: 'file.jpg')
+        puts "attached avatar"
+    s1 = Showing.create(time: Faker::Time.between(from: Date.today, to: Date.today + 7), movie: Movie.all.sample)
+    c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.first, showing: Showing.all.sample)
 end
 
 admin_user = User.create(name: "Roman", email: "admin@admin", password: "roman1", is_admin: true)
-guest_user = User.create(name: "guest", email: "guest@guest", password: "guest")
