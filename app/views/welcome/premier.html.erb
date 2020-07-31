@@ -1,4 +1,6 @@
-<h1>Premier Page</h1>
+
+<h1> premiere </h1>
+
 <%=@movie.title%>
 <div class ="resp-container"> 
     <iframe 
@@ -13,12 +15,10 @@
 
 <%@comments.sort_by{:created_at}.each do |comment|%>
     <li><%=comment.comment_text%></li>
-    if user == admin
-        button_to 'delete', comment_path(comment), method: :destroy
-    end
+    <%if !@current_user.nil? && @current_user.is_admin %>
+        <%= button_to 'delete', showing_comments_path(comment), method: :destroy %>
 <%end%>
-
-
+<%end%>
 
 
 

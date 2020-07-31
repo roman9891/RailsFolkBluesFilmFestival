@@ -6,15 +6,25 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="top-menu">
+  
+    <nav class="container top-menu">
       <%= link_to image_tag('logo.png', class: "logo"), welcome_path %>
-      <%= link_to "Home", premier_url , class: "header-button"%>
-    </div>
-    <div
+      <div class="container header-buttons">
+        <%if @current_user%>
+        <%=button_to 'Log Out', login_path, method: :delete, class: "header-button", id: "log-out-button"%>
+        <%= button_to "Welcome #{@current_user.name}", user_path(@current_user),method: :get ,class: "header-button", id:"welcome-status"%>
+        <%else%>
+        <%=button_to 'Sign-up', new_user_path, method: :get ,class: "header-button", id: "sign-up-button" %>
+        <%=button_to 'Login', login_path, method: :get ,class: 'header-button', id:'log-in-button' %>
+        <%end%>
+      <%= button_to "Home", premier_url , method: :get ,class: "header-button"%>
+      </div>
+    </nav>
+    <div class= "row"> </div>
+    <br>
+
     <%= yield %>
   </body>
 </html>
