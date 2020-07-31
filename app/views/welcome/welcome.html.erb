@@ -1,45 +1,38 @@
 
-<h1>Rails Dance Film Festival</h1>
-*To do: User Show Page - add movie submission button?* added link on user page
-*To do: Premier Page - Comment/Delete button?*
-*To do: validates showing for accepted?*    
-*To do: Movie New page - remove user drop down?*
-*To do: is mature filter for movies and premier?*
-*To do: Review Movies page?*
-*To do: Schedule Movies page?*
-<div>    
-    <%if @current_user%>
-        <%=link_to "Welcome #{@current_user.name}", user_path(@current_user)%>
-        <%=button_to 'Log Out', login_path, method: :delete%>
-    <%else%>
-        <%=button_to 'Sign-up', new_user_path, method: :get %>
-        <%=button_to 'Login', login_path, method: :get %>
-    <%end%>
+    
+<div class="container premier-details">
+<h1 style="text-align: center">Film of the Day</h1>
+    <div class="row">
+        <div class="col-md-6 left-box" style="text-align: center">
+            <%= image_tag(Showing.today.movie.poster, class: "movie-poster") %>
+        </div>
+        <div class="col-md-6 right-box ">
+            <h2> <%= Showing.today.movie.title %> </h2>
+            <p> <%=Showing.today.movie.description %> </p>
+            <p> Creator(s) </p>
+            <div class= "creator-info">
+            <%= link_to image_tag(Showing.today.movie.user.avatar, title: Showing.today.movie.user.name), user_path(Showing.today.movie.user) %>
+            </div>
+            <%= link_to "Watch Now", premier_url %>            
+        </div>
+    </div>
 </div>
-<div>premier:
-    <%if Showing.today%>
-        <%=link_to Showing.today.movie.title, premier_path%>
-    <%else%>
-        <%="No movie scheduled today"%>
-    <%end%>
-</div>
-<div><%=link_to 'Movie Gallery', movies_path%></div>
-<div>movies mvp</div><br>
-<div>
-<table>
-    <thead><th> Movie Premieres for This Week </th></thead>
-    <tbody>
+<div class = "container this-weeks-showings">
+<h2 style= "text-align: center"> Movie Premieres for This Week </h2>
+<div class="row">
 
-        <%Showing.this_week.each do |showing|%>
-           <tr>
-                <td> <%="#{showing.time.strftime("%A")}"%> </td>
-                <td> <%= "#{showing.movie.title}"%> </td>
-           </tr>
-        <%end%>
-   
-            </tbody>
-            </table>
+<%Showing.this_week.each do |showing|%>
+   <div class="col-md-4" style="text-align: center">
+   <div class= "col-6" style="text-align: center">
+   <h2><%="#{showing.time.strftime("%B " +"%e "+ "%Y ")}"%></h2><br>
+   <%= image_tag(showing.movie.poster , style: "text-align: center")%> </div>
+        <div class= "col-6" style="text-align: center">
+            <p><%= showing.movie.title %><br>
+            <%= link_to "Reserve Ticket",  movie_path(showing.movie)%> </p>
+         </div>
+    </div>
+    
+ <%end%>
+
 
 </div>
-<div>brief site explanation</div>
-<div>about us / contact us</div>
