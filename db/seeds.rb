@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'open-uri'
 
 User.destroy_all
 Movie.destroy_all
@@ -20,17 +21,19 @@ Showing.destroy_all
         email: Faker::Internet.unique.email, 
         password: "funnycat83")
     m1 = Movie.create(
-        title: Faker::JapaneseMedia::SwordArtOnline.game_name, 
+        title: Faker::Movie.title, 
         url: '<iframe src="https://player.vimeo.com/video/209913748?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         <p><a href="https://vimeo.com/209913748">Adele Radio City</a> from <a href="https://vimeo.com/user7917232">Es Devlin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>', 
         is_mature: true,
         user: User.all.sample,
-        acceptance_status: hero)
+
+        acceptance_status: hero,
+        )
+       
+        m1.poster.attach(io: open("https://www.fillmurray.com/200/"+(rand(200..220).to_s)), filename: 'file.jpg')
+
     s1 = Showing.create(time: Faker::Time.between(from: Date.today - 7, to: Date.today + 7), movie: Movie.all.sample)
     c1 = Comment.create(comment_text: Faker::Quotes::Shakespeare.hamlet_quote, user: User.all.sample, showing: Showing.all.sample)
 end
 
-s1 = Showing.create(time: Time.now, movie: Movie.all.sample)
-c1 = Comment.create(comment_text: "woooooah", showing: s1, user: User.all.sample)
-
-admin_user = User.create(name: "Roman", email: "roman@mail.yo", password: "roman1", is_admin: true)
+admin_user = User.create(name: "Roman", email: "admin@admin", password: "roman1", is_admin: true)

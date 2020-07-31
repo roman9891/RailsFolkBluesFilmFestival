@@ -1,6 +1,8 @@
 <h1>Movie Index</h1>
-<div>
-    <%@movies.each do |movie|%>
-        <li><%=link_to movie.title, movie_path(movie)%></li>
-    <%end%>
+<div class=gallery id=index>
+<%@movies.each do |movie|%>
+    <li id=index><%=link_to image_tag(movie.poster), movie_path(movie)%>  
+        <p><%= movie.title %></p>
+    </li>
+<%end%>
 </div>
